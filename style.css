@@ -2,7 +2,7 @@
     --bg-color: #000;
     --text-color: #FFF;
     --text-color-menu-mobile: #E1E1E6;
-    --button-color: #8257E5;
+    --purple-color: #8257E5;
     --border-color: #29292E;
     --border-color-menu-mobile: #A8A8B3;
     --font-family: 'Manrope', sans-serif;
@@ -10,12 +10,17 @@
 
 *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     color: var(--text-color);
     font-family: var(--font-family);
 }
 
-.none{
+.desktop-items{
+    display: none;
+}
+
+.display-none{
     display: none;
 }
 
@@ -24,26 +29,36 @@ body{
 }
 
 header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-areas: "icons button"
+                         "aside aside";
     margin-top: 10px;
-    padding: 26px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color); 
 }
 
-#menu{
+header img{
+    grid-area: icons;
+    padding: 26px;
+    width: fit-content;
+}
+
+#menu-button{
+    grid-area: button;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
 }
 
 ul{
+    grid-area: aside;
     list-style: none;
     padding: 0;
 }
 
 li{
-    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
     padding: 18px 0px 14px 30px;
     color: var(--border-color-menu-mobile);
     font-size: 18px;
@@ -51,17 +66,26 @@ li{
 
 li:hover{
     color: var(--text-color-menu-mobile);
-    border-left: 5px solid var(--button-color);
+    border-left: 5px solid var(--purple-color);
     padding-left: 25px;
+}
+
+button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: 1px solid var(--purple-color);
+    border-radius: 6px;
+    padding: 10px 36px;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 main{
     width: 100vw;
-    background-position: bottom;
-    background-image: url(./assets/blur-mobile.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,20 +100,6 @@ h1{
     margin: 88px 28px;
 }
 
-button{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: none;
-    border: 1px solid var(--button-color);
-    border-radius: 6px;
-    padding: 10px 36px;
-}
-
-button:hover{
-    cursor: pointer;
-}
-
 .title-box{
     height: fit-content;
     display: flex;
@@ -102,11 +112,112 @@ button:hover{
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.title-code{
+.title-shadow{
     color: var(--bg-color);
-    text-shadow: -1px -1px 0 var(--button-color), 1px -1px 0 var(--button-color), -1px 1px 0 var(--button-color), 1px 1px 0 var(--button-color);
+    text-shadow: -1px -1px 0 var(--purple-color), 1px -1px 0 var(--purple-color), -1px 1px 0 var(--purple-color), 1px 1px 0 var(--purple-color);
 }
 
-.rocket-coffee{
+.background-img{
     width: 100vw;
+}
+
+.blur {
+    position: fixed;
+    width: 321px;
+    height: 321px;
+    filter: blur(200px);
+    background: #996DFF;
+    z-index: -1;
+}
+
+.gradient-psition-botton {
+    top: 76%;
+    left: calc((100vw - 321px) / 2);
+}
+
+@media only screen and (min-width:1200px){
+    .display-none{
+        display: block;
+    }
+    
+    .mobile-items{
+        display: none;
+    }
+
+    .desktop-items{
+        display: block;
+    }
+
+    body{
+        height: 100vh;
+    }
+
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 50px;
+        margin: 0;
+        border: none;
+    }
+
+    header img{
+        padding: 0;
+    }
+
+    #menu-button{display: none;}
+
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: calc(100vh - 100px);
+    }
+
+    .desktop-menu{
+        display: flex;
+        gap: 32px;
+        margin-left: 11vw;
+        margin-right: 10vw;
+    }
+
+    li{
+        border: none;
+        padding: 0;
+        color: var(--text-color);
+    }
+
+    li:hover{
+        cursor: pointer;
+        padding: 0;
+        border: none;
+        color: var(--text-color);
+    }
+
+    button{
+        display: flex;
+        height: fit-content;
+        padding: 11px 38px;
+    }
+
+    .title-box{
+        font-size: 80px;
+        line-height: 109px;
+        margin-top: 40px;
+    }
+
+    .background-img{
+        width: fit-content;
+    }
+    
+    .gradient-psition-top{
+        top: -9%;
+        left: 82%;
+    }
+
+    .gradient-psition-botton {
+        top: 64%;
+        left: 0%;
+    }
 }

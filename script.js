@@ -1,15 +1,15 @@
-const menu = document.getElementById("menu")
-const openMenu = document.getElementById("open-menu")
-const closerMenu = document.getElementById("closer-menu")
+const menuButton = document.getElementById("menu-button")
+const openMenu = document.getElementById("menu-open")
+const closerMenu = document.getElementById("menu-closer")
+const menuItems = document.getElementById("menu-items")
 const main = document.getElementById("main")
-const aside = document.getElementById("aside")
+const blurMobile = document.getElementById("blur-mobile")
 
 
-
-menu.addEventListener('click', function togle(){
-    main.classList.toggle('none')
-    openMenu.classList.toggle('none')
-    closerMenu.classList.toggle('none')
-    aside.classList.toggle('none')
-
+menuButton.addEventListener('click', function togle(){
+    main.classList.toggle('display-none')
+    openMenu.classList.toggle('display-none')
+    closerMenu.classList.toggle('display-none')
+    menuItems.classList.toggle('display-none')
+    blurMobile.classList.toggle('display-none')
 })
